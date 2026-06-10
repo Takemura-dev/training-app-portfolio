@@ -25,6 +25,8 @@ Java + Spring Boot + React を使用した筋トレ記録アプリです。
 
 ### ER図
 
+![ER Diagram](docs/er_diagram.png)
+
 ## 機能一覧
 
 ### 実装済み
