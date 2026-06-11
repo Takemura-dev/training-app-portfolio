@@ -1,4 +1,5 @@
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/TrainingApplication.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/controller/HealthController.java
+/Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/entity/TrainingRecord.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/entity/User.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/repository/UserRepository.java
