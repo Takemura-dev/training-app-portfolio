@@ -10,8 +10,8 @@ Java + Spring Boot + React を使用した筋トレ記録アプリです。
 ## 技術スタック
 
 ### バックエンド
-- **言語**：Java 17
-- **フレームワーク**：Spring Boot 3.2
+- **言語**：Java 25
+- **フレームワーク**：Spring Boot 4.0.6
 - **データベース**：PostgreSQL 16
 - **認証**：JWT（JSON Web Token）
 - **テスト**：JUnit 5
