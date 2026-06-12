@@ -4,3 +4,4 @@
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/entity/User.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/repository/TrainingRecordRepository.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/repository/UserRepository.java
+/Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/service/TrainingRecordService.java

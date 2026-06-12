@@ -1,6 +1,7 @@
 com/example/training/controller/HealthController.class
 com/example/training/entity/User.class
 com/example/training/TrainingApplication.class
+com/example/training/service/TrainingRecordService.class
 com/example/training/repository/UserRepository.class
 com/example/training/entity/TrainingRecord.class
 com/example/training/repository/TrainingRecordRepository.class
