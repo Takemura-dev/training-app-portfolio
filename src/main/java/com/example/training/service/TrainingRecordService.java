@@ -3,6 +3,7 @@ package com.example.training.service;
 import com.example.training.entity.TrainingRecord;
 import com.example.training.entity.User;
 import com.example.training.repository.TrainingRecordRepository;
+import com.example.training.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,7 +38,7 @@ public class TrainingRecordService {
     public TrainingRecord getRecord(Long id, User user) {
         return recordRepository.findByIdAndUser(id, user)
                 .orElseThrow(() ->
-                        new RuntimeException("記録が見つかりません id: " + id)
+                        new ResourceNotFoundException("記録が見つかりません id: " + id)
                 );
     }
 
@@ -75,7 +76,7 @@ public class TrainingRecordService {
         // 存在チェック＋権限チェック
         boolean exists = recordRepository.existsByIdAndUser(id, user);
         if (!exists) {
-            throw new RuntimeException("記録が見つかりません id: " + id);
+            throw new ResourceNotFoundException("記録が見つかりません id: " + id);
         }
         recordRepository.deleteById(id);
     }
