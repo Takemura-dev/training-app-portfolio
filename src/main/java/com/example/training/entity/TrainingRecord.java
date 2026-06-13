@@ -3,6 +3,7 @@ package com.example.training.entity;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "training_records")
@@ -16,24 +17,42 @@ public class TrainingRecord {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    //　種目名：必須・100文字以内
+    @NotBlank(message = "種目名は必須です")
+    @Size(max = 100, message = "種目名は100文字以内です")
     @Column(nullable = false)
     private String exerciseName;
 
+    //　重量：必須・正の数
+    @NotNull(message = "重量は必須です")
+    @Positive(message = "重量は正の数を入力してください")
     @Column(nullable = false)
     private Double weight;
 
+    //　回数：必須・1以上999以下
+    @NotNull(message = "回数は必須です")
+    @Min(value = 1, message = "回数は1以上です")
+    @Max(value = 999, message = "回数は999以下です")
     @Column(nullable = false)
     private Integer reps;
-
+    
+    // セット数：必須・1以上10以下
+    @NotNull(message = "セット数は必須です")
+    @Min(value = 1, message = "セット数は1以上です")
+    @Max(value = 10, message = "セット数は10以下です")
     @Column(nullable = false)
     private Integer sets;
-
+    
+    // トレーニング日：必須
+    @NotNull(message = "訓練日は必須です")
     @Column(nullable = false)
     private LocalDate trainDate;
 
     @Column
     private String muscleGroup;
 
+    //　メモ：500文字以内
+    @Size(max = 500)
     @Column(length = 500)
     private String memo;
 

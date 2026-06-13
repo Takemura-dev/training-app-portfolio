@@ -4,6 +4,7 @@ import com.example.training.entity.TrainingRecord;
 import com.example.training.entity.User;
 import com.example.training.service.TrainingRecordService;
 import com.example.training.repository.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -47,7 +48,7 @@ public class TrainingRecordController {
     // ④ 記録を作成
     @PostMapping
     public TrainingRecord createRecord(
-            @RequestBody TrainingRecord record
+            @Valid @RequestBody TrainingRecord record
     ) {
         User user = getTemporaryUser();
         record.setUser(user);
@@ -58,7 +59,7 @@ public class TrainingRecordController {
     @PutMapping("/{id}")
     public TrainingRecord updateRecord(
             @PathVariable Long id,
-            @RequestBody TrainingRecord record
+            @Valid @RequestBody TrainingRecord record
     ) {
         User user = getTemporaryUser();
         return recordService.updateRecord(id, user, record);
