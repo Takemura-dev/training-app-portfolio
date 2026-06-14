@@ -47,7 +47,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // 誰でもアクセス OK
                         .requestMatchers(
-                                "/api/auth/**"
+                                "/api/auth/**",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**"
                         ).permitAll()
                         // それ以外は認証が必要
                         .anyRequest().authenticated()

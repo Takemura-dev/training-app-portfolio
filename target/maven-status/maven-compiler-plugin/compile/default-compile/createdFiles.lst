@@ -3,6 +3,7 @@ com/example/training/controller/AuthController.class
 com/example/training/dto/LoginRequest.class
 com/example/training/util/JwtUtil.class
 com/example/training/repository/UserRepository.class
+com/example/training/config/SwaggerConfig.class
 com/example/training/entity/TrainingRecord.class
 com/example/training/exception/GlobalExceptionHandler.class
 com/example/training/controller/HealthController.class

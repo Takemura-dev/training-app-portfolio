@@ -94,6 +94,13 @@
       <artifactId>spring-boot-starter-security</artifactId>
     </dependency>
 
+    <!-- Swagger / SpringDoc OpenAPI -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>3.0.3</version>
+    </dependency>
+
     <!-- JUnit 5 テスト -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

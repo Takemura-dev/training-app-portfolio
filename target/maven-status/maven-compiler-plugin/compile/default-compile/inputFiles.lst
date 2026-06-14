@@ -1,5 +1,6 @@
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/TrainingApplication.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/config/SecurityConfig.java
+/Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/config/SwaggerConfig.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/controller/AuthController.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/controller/HealthController.java
 /Users/hayatotakemura/Desktop/training-app/src/main/java/com/example/training/controller/TrainingRecordController.java
