@@ -2,6 +2,7 @@ package com.example.training.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +17,7 @@ public class User {
     private String email;
 
     //パスワード
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
