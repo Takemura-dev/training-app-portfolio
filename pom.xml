@@ -101,6 +101,20 @@
       <version>3.0.3</version>
     </dependency>
 
+    <!-- テスト用インメモリ DB -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Spring Boot 4.x JPA テスト -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
     <!-- JUnit 5 テスト -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
