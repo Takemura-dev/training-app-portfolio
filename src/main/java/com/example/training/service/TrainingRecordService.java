@@ -2,8 +2,8 @@ package com.example.training.service;
 
 import com.example.training.entity.TrainingRecord;
 import com.example.training.entity.User;
-import com.example.training.repository.TrainingRecordRepository;
 import com.example.training.exception.ResourceNotFoundException;
+import com.example.training.repository.TrainingRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

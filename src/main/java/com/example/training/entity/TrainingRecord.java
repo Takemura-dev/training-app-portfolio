@@ -1,9 +1,10 @@
 package com.example.training.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "training_records")
