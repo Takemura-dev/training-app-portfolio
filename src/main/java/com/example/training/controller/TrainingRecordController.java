@@ -18,9 +18,6 @@ public class TrainingRecordController {
 
     @Autowired
     private TrainingRecordService recordService;
-
-
-    // ① ユーザー取得
     private User getCurrentUser() {
         Authentication authentication =
                 SecurityContextHolder
@@ -28,22 +25,16 @@ public class TrainingRecordController {
                         .getAuthentication();
         return (User) authentication.getPrincipal();
     }
-
-    // ② 記録一覧取得
     @GetMapping
     public List<TrainingRecord> getRecords() {
         User user = getCurrentUser();
         return recordService.getUserRecords(user);
     }
-
-    // ③ 記録を1件取得
     @GetMapping("/{id}")
     public TrainingRecord getRecord(@PathVariable Long id) {
         User user = getCurrentUser();
         return recordService.getRecord(id, user);
     }
-
-    // ④ 記録を作成
     @PostMapping
     public TrainingRecord createRecord(
             @Valid @RequestBody TrainingRecord record
@@ -52,8 +43,6 @@ public class TrainingRecordController {
         record.setUser(user);
         return recordService.createRecord(record);
     }
-
-    // ⑤ 記録を更新
     @PutMapping("/{id}")
     public TrainingRecord updateRecord(
             @PathVariable Long id,
@@ -62,8 +51,6 @@ public class TrainingRecordController {
         User user = getCurrentUser();
         return recordService.updateRecord(id, user, record);
     }
-
-    // ⑥ 記録を削除
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteRecord(
             @PathVariable Long id

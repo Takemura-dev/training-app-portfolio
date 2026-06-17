@@ -31,31 +31,26 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
-        // ① Authorization ヘッダーを取得
         String authHeader = request.getHeader("Authorization");
 
-        // ② Bearer トークンがない場合はスルー
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // ③ トークンを取り出す（"Bearer " の後ろ）
+        // "Bearer " は7文字のため、それ以降を切り出す
         String token = authHeader.substring(7);
 
-        // ④ トークンが有効か確認
         if (!jwtUtil.isTokenValid(token)) {
             filterChain.doFilter(request, response);
             return;
         }
 
-        // ⑤ トークンからメールアドレスを取り出す
         String email = jwtUtil.extractEmail(token);
 
-        // ⑥ ユーザーを DB から取得
         userRepository.findByEmail(email).ifPresent(user -> {
 
-            // ⑦ 認証情報を Spring Security にセット
+            // Controller の getCurrentUser() でユーザー情報を取得できるようにする
             UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(
                             user, null, new ArrayList<>()
@@ -64,7 +59,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     .setAuthentication(authentication);
         });
 
-        // ⑧ 次のフィルターへ
         filterChain.doFilter(request, response);
     }
 }

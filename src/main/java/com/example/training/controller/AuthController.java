@@ -27,24 +27,20 @@ public class AuthController {
 
     @Autowired
     private JwtUtil jwtUtil;
-
-    // ① ユーザー登録
     @PostMapping("/register")
     public ResponseEntity<String> register(
             @Valid @RequestBody RegisterRequest request
     ) {
-        // メールアドレスの重複チェック
         if (userRepository.existsByEmail(request.getEmail())) {
             return ResponseEntity
                     .badRequest()
                     .body("このメールアドレスは既に使用されています");
         }
-
-        // ユーザーを作成
         User user = new User();
         user.setEmail(request.getEmail());
+        // DB流出時の平文パスワード漏洩を防ぐ
         user.setPassword(
-                passwordEncoder.encode(request.getPassword()) // ハッシュ化！
+                passwordEncoder.encode(request.getPassword())
         );
         user.setUsername(request.getUsername());
 
@@ -52,20 +48,15 @@ public class AuthController {
 
         return ResponseEntity.ok("ユーザー登録が完了しました");
     }
-
-    // ② ログイン
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(
             @Valid @RequestBody LoginRequest request
     ) {
-        // メールアドレスでユーザーを検索
         User user = userRepository
                 .findByEmail(request.getEmail())
                 .orElseThrow(() ->
                         new RuntimeException("メールアドレスまたはパスワードが正しくありません")
                 );
-
-        // パスワードを検証
         if (!passwordEncoder.matches(
                 request.getPassword(),
                 user.getPassword()
@@ -74,8 +65,6 @@ public class AuthController {
                     .badRequest()
                     .body(null);
         }
-
-        // JWT トークンを発行
         String token = jwtUtil.generateToken(user.getEmail());
 
         return ResponseEntity.ok(

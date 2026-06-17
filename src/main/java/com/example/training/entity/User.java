@@ -8,40 +8,36 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "users")
 public class User {
-    //主キー
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //メールアドレス
     @Column(nullable = false, unique = true)
     private String email;
 
-    //パスワード
+    // レスポンスにパスワードが含まれる漏洩を防ぐ
     @JsonIgnore
     @Column(nullable = false)
     private String password;
 
-    // ユーザ名
     @Column(nullable = false)
     private String username;
 
-    //作成日時
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    //更新日時
     @Column
     private LocalDateTime updatedAt;
 
-    //保存前に自動実行
+    // 保存前に自動実行（createdAt・updatedAt を自動セット）
     @PrePersist
     protected void onCreate(){
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
     }
 
-    //更新前に自動実行
+    // 更新前に自動実行（updatedAt を自動更新）
     @PreUpdate
     protected void onUpdate(){
         updatedAt = LocalDateTime.now();

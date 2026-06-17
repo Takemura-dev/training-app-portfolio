@@ -41,16 +41,12 @@ public class SecurityConfig {
                         )
                 )
 
-
-                // URL ごとのアクセス制御
                 .authorizeHttpRequests(auth -> auth
-                        // 誰でもアクセス OK
                         .requestMatchers(
                                 "/api/auth/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
-                        // それ以外は認証が必要
                         .anyRequest().authenticated()
                 )
 
@@ -61,7 +57,6 @@ public class SecurityConfig {
                         )
                 )
 
-                // JWT フィルターを追加
                 .addFilterBefore(
                         jwtAuthFilter,
                         UsernamePasswordAuthenticationFilter.class
@@ -70,7 +65,6 @@ public class SecurityConfig {
         return http.build();
     }
 
-    // パスワードハッシュ化の設定
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
